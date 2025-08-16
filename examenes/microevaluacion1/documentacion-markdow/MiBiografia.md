@@ -1,4 +1,4 @@
-# 🖩 Proyecto: Calculadora Científica en C#
+# 🖩 Microevaluacion1: Calculadora Científica en C#
 **Estudiante:** Wilson Aguilar Lima
 
 ##  Herramientas necesarias
