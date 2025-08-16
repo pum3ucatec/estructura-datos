@@ -1,80 +1,177 @@
 ﻿using System;
+using System.Globalization;
 
-while (true)
+class Program
 {
-    Console.Clear();
-    Console.WriteLine("===== CALCULADORA =====");
-    Console.WriteLine("1. Suma");
-    Console.WriteLine("2. Resta");
-    Console.WriteLine("3. Multiplicación");
-    Console.WriteLine("4. División");
-    Console.WriteLine("5. Raíz cuadrada");
-    Console.WriteLine("6. Potencia");
-    Console.WriteLine("7. Seno (grados)");
-    Console.WriteLine("8. Coseno (grados)");
-    Console.WriteLine("9. Logaritmo natural");
-    Console.WriteLine("10. Salir");
-    Console.Write("Selecciona una opción: ");
-
-    if (!int.TryParse(Console.ReadLine(), out int opcion) || opcion < 1 || opcion > 10)
+    static void Main()
     {
-        Console.WriteLine("Opción inválida. Pulsa una tecla...");
-        Console.ReadKey();
-        continue;
-    }
+        // Usar punto como separador decimal de forma consistente
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-    if (opcion == 10) break;
-
-    double num1 = 0, num2 = 0, resultado = double.NaN;
-
-    bool requiereDos = opcion <= 4 || opcion == 6;
-    try
-    {
-        if (requiereDos)
+        while (true)
         {
-            Console.Write("Ingresa el primer número: ");
-            num1 = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Ingresa el segundo número: ");
-            num2 = Convert.ToDouble(Console.ReadLine());
+            Console.Clear();
+            Console.WriteLine("=== CALCULADORA CIENTÍFICA ===");
+            Console.WriteLine("Solo se permiten números. Use punto como separador decimal.");
+            Console.WriteLine();
+            Console.WriteLine("1) Suma (a + b)");
+            Console.WriteLine("2) Resta (a - b)");
+            Console.WriteLine("3) Multiplicación (a * b)");
+            Console.WriteLine("4) División (a / b)");
+            Console.WriteLine("5) Raíz cuadrada (√x)");
+            Console.WriteLine("6) Potencia (x^y)");
+            Console.WriteLine("7) Logaritmo natural (ln x)");
+            Console.WriteLine("8) Seno (sin x) [radianes]");
+            Console.WriteLine("9) Coseno (cos x) [radianes]");
+            Console.WriteLine("0) Salir");
+            Console.WriteLine();
+
+            int opcion = LeerOpcion("Elige una opción: ", 0, 9);
+
+            if (opcion == 0)
+            {
+                Console.WriteLine("Saliendo... ¡Hasta luego!");
+                return;
+            }
+
+            try
+            {
+                switch (opcion)
+                {
+                    case 1: // Suma
+                    {
+                        double a = LeerNumero("a = ");
+                        double b = LeerNumero("b = ");
+                        Console.WriteLine($"Resultado: {a} + {b} = {a + b}");
+                        break;
+                    }
+                    case 2: // Resta
+                    {
+                        double a = LeerNumero("a = ");
+                        double b = LeerNumero("b = ");
+                        Console.WriteLine($"Resultado: {a} - {b} = {a - b}");
+                        break;
+                    }
+                    case 3: // Multiplicación
+                    {
+                        double a = LeerNumero("a = ");
+                        double b = LeerNumero("b = ");
+                        Console.WriteLine($"Resultado: {a} * {b} = {a * b}");
+                        break;
+                    }
+                    case 4: // División
+                    {
+                        double a = LeerNumero("a = ");
+                        double b = LeerNumeroNoCero("b (≠ 0) = ");
+                        Console.WriteLine($"Resultado: {a} / {b} = {a / b}");
+                        break;
+                    }
+                    case 5: // Raíz cuadrada
+                    {
+                        double x = LeerNumeroNoNegativo("x (≥ 0) = ");
+                        Console.WriteLine($"Resultado: √{x} = {Math.Sqrt(x)}");
+                        break;
+                    }
+                    case 6: // Potencia
+                    {
+                        double x = LeerNumero("Base (x) = ");
+                        double y = LeerNumero("Exponente (y) = ");
+                        Console.WriteLine($"Resultado: {x}^{y} = {Math.Pow(x, y)}");
+                        break;
+                    }
+                    case 7: // Logaritmo natural
+                    {
+                        double x = LeerNumeroPositivo("x (> 0) = ");
+                        Console.WriteLine($"Resultado: ln({x}) = {Math.Log(x)}");
+                        break;
+                    }
+                    case 8: // Seno
+                    {
+                        double x = LeerNumero("x (radianes) = ");
+                        Console.WriteLine($"Resultado: sin({x}) = {Math.Sin(x)}");
+                        break;
+                    }
+                    case 9: // Coseno
+                    {
+                        double x = LeerNumero("x (radianes) = ");
+                        Console.WriteLine($"Resultado: cos({x}) = {Math.Cos(x)}");
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine();
+            Console.Write("Presiona cualquier tecla para continuar...");
+            Console.ReadKey(true);
         }
-        else
+    }
+
+    // Lee una opción de menú entre min y max (inclusive), solo números enteros
+    static int LeerOpcion(string prompt, int min, int max)
+    {
+        while (true)
         {
-            Console.Write("Ingresa el número: ");
-            num1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+
+            if (int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out int op)
+                && op >= min && op <= max)
+                return op;
+
+            Console.WriteLine($"Entrada inválida. Debe ser un número entero entre {min} y {max}.");
         }
     }
-    catch
+
+    // Lee un double (solo números) con reintento
+    static double LeerNumero(string prompt)
     {
-        Console.WriteLine("Entrada no válida. Pulsa una tecla...");
-        Console.ReadKey();
-        continue;
+        while (true)
+        {
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+
+            if (double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out double value))
+                return value;
+
+            Console.WriteLine("Entrada inválida. Solo se permiten números (usa punto como decimal).");
+        }
     }
 
-    switch (opcion)
+    // Lee un double distinto de cero
+    static double LeerNumeroNoCero(string prompt)
     {
-        case 1: resultado = num1 + num2; break;
-        case 2: resultado = num1 - num2; break;
-        case 3: resultado = num1 * num2; break;
-        case 4:
-            if (num2 == 0) Console.WriteLine("Error: división entre cero.");
-            else resultado = num1 / num2;
-            break;
-        case 5:
-            if (num1 < 0) Console.WriteLine("Error: raíz de número negativo.");
-            else resultado = Math.Sqrt(num1);
-            break;
-        case 6: resultado = Math.Pow(num1, num2); break;
-        case 7: resultado = Math.Sin(num1 * Math.PI / 180.0); break;
-        case 8: resultado = Math.Cos(num1 * Math.PI / 180.0); break;
-        case 9:
-            if (num1 <= 0) Console.WriteLine("Error: logaritmo definido para números > 0.");
-            else resultado = Math.Log(num1);
-            break;
+        while (true)
+        {
+            double v = LeerNumero(prompt);
+            if (v != 0.0) return v;
+            Console.WriteLine("El valor no puede ser cero. Intenta nuevamente.");
+        }
     }
 
-    if (!double.IsNaN(resultado))
-        Console.WriteLine($"Resultado: {resultado}");
+    // Lee un double >= 0
+    static double LeerNumeroNoNegativo(string prompt)
+    {
+        while (true)
+        {
+            double v = LeerNumero(prompt);
+            if (v >= 0.0) return v;
+            Console.WriteLine("El valor debe ser mayor o igual a 0. Intenta nuevamente.");
+        }
+    }
 
-    Console.WriteLine("Presiona una tecla para continuar...");
-    Console.ReadKey();
+    // Lee un double > 0
+    static double LeerNumeroPositivo(string prompt)
+    {
+        while (true)
+        {
+            double v = LeerNumero(prompt);
+            if (v > 0.0) return v;
+            Console.WriteLine("El valor debe ser mayor que 0. Intenta nuevamente.");
+        }
+    }
 }
