@@ -1,5 +1,6 @@
-
 # 📘 Práctica: Arreglos en C#  
+
+**Nota:** Crear una rama llamada ´GastonQuelali/Practica3´
 
 ## 1. Declaración e inicialización  
 Declara un arreglo de 5 enteros y asígnales valores manualmente. Luego imprime todos los valores en pantalla.  
