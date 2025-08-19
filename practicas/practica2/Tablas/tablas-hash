@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        HashSet<int> conjunto = new HashSet<int> { 1, 2, 3 };
+        conjunto.Add(4);
+        conjunto.Add(2); // No se agregará porque ya existe
+
+        foreach (var n in conjunto)
+        {
+            Console.WriteLine(n);
+        }
+    }
+}
