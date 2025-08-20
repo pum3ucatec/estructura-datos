@@ -67,7 +67,7 @@ Menor: 3
 ---
 
 ## 6. Búsqueda lineal  
-Dado un arreglo de 10 números, pide al usuario un número y determina si está dentro del arreglo (imprime la posición si existe).  
+Dado un arreglo de 10 números, pide al usuario un número y determina si está dentro del arreglo (imprime la posición si existe).  p7
 
 **Ejemplo esperado:**  
 ```
