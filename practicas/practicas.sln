@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p1-contar-1-al-10", "p1-contar-1-al-10\p1-contar-1-al-10.csproj", "{F509ED80-02FA-BD56-07FB-D7B4E3B67713}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2SumarN", "p2-sumar-n\P2SumarN.csproj", "{D8D12018-AB4E-8687-40D1-760BE3A556DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F509ED80-02FA-BD56-07FB-D7B4E3B67713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F509ED80-02FA-BD56-07FB-D7B4E3B67713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F509ED80-02FA-BD56-07FB-D7B4E3B67713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F509ED80-02FA-BD56-07FB-D7B4E3B67713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8D12018-AB4E-8687-40D1-760BE3A556DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D12018-AB4E-8687-40D1-760BE3A556DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D12018-AB4E-8687-40D1-760BE3A556DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D12018-AB4E-8687-40D1-760BE3A556DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FD6D25F-263C-4441-AF4A-09D757F96C6C}
+	EndGlobalSection
+EndGlobal
