@@ -4,7 +4,7 @@ class Program
 {
     static void Main()
     {
-        // Matriz de ejemplo
+    
         int[,] matriz = {
             {5, 4, 3},
             {9, 8, 7}
@@ -13,7 +13,6 @@ class Program
         int filas = matriz.GetLength(0);
         int columnas = matriz.GetLength(1);
 
-        // Crear la matriz transpuesta
         int[,] transpuesta = new int[columnas, filas];
 
         for (int i = 0; i < filas; i++)
@@ -24,7 +23,6 @@ class Program
             }
         }
 
-        // Mostrar la matriz original
         Console.WriteLine("Matriz original:");
         for (int i = 0; i < filas; i++)
         {
@@ -37,7 +35,6 @@ class Program
 
         Console.WriteLine();
 
-        // Mostrar la matriz transpuesta
         Console.WriteLine("Matriz transpuesta:");
         for (int i = 0; i < columnas; i++)
         {
