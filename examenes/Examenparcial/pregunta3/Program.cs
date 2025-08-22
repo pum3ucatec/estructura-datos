@@ -4,45 +4,27 @@ class Program
 {
     static void Main()
     {
-        // Solicitar el número de filas y columnas de la matriz
-        int filas = GetValidInteger("Introduce el número de filas de la matriz:");
-        int columnas = GetValidInteger("Introduce el número de columnas de la matriz:");
+        // Solicitamos el número de filas y columnas de la matriz
+        int filas = LeerEntero("Introduce el número de filas: ");
+        int columnas = LeerEntero("Introduce el número de columnas: ");
 
-        // Crear la matriz original
+        // Creamos la matriz original
         int[,] matriz = new int[filas, columnas];
 
-        // Ingresar los valores de la matriz
+        // Solicitamos los valores de la matriz al usuario
         Console.WriteLine("Introduce los valores de la matriz:");
         for (int i = 0; i < filas; i++)
         {
             for (int j = 0; j < columnas; j++)
             {
-                matriz[i, j] = GetValidInteger($"Elemento en posición [{i + 1}, {j + 1}]: ");
+                matriz[i, j] = LeerEntero($"Matriz[{i},{j}]: ");
             }
         }
 
-        // Mostrar la matriz original
-        Console.WriteLine("\nMatriz Original:");
-        PrintMatrix(matriz);
-
-        // Obtener la transpuesta
-        int[,] transpuesta = GetTranspose(matriz);
-
-        // Mostrar la matriz transpuesta
-        Console.WriteLine("\nMatriz Transpuesta:");
-        PrintMatrix(transpuesta);
-    }
-
-    // Función para obtener la matriz transpuesta
-    static int[,] GetTranspose(int[,] matriz)
-    {
-        int filas = matriz.GetLength(0);
-        int columnas = matriz.GetLength(1);
-
-        // Crear una nueva matriz con filas y columnas intercambiadas
+        // Creamos la matriz transpuesta
         int[,] transpuesta = new int[columnas, filas];
 
-        // Llenar la matriz transpuesta
+        // Realizamos la transposición
         for (int i = 0; i < filas; i++)
         {
             for (int j = 0; j < columnas; j++)
@@ -51,49 +33,33 @@ class Program
             }
         }
 
-        return transpuesta;
-    }
-
-    // Función para imprimir la matriz
-    static void PrintMatrix(int[,] matriz)
-    {
-        int filas = matriz.GetLength(0);
-        int columnas = matriz.GetLength(1);
-
-        for (int i = 0; i < filas; i++)
+        // Imprimimos la matriz transpuesta
+        Console.WriteLine("\nMatriz transpuesta:");
+        for (int i = 0; i < columnas; i++)
         {
-            for (int j = 0; j < columnas; j++)
+            for (int j = 0; j < filas; j++)
             {
-                Console.Write(matriz[i, j] + " ");
+                Console.Write(transpuesta[i, j] + " ");
             }
             Console.WriteLine();
         }
     }
 
-    // Función para obtener un valor entero válido, con manejo de nulos
-    static int GetValidInteger(string message)
+    // Método para leer un número entero de forma segura
+    static int LeerEntero(string mensaje)
     {
-        int value;
+        int numero;
         while (true)
         {
-            Console.WriteLine(message);
-            string input = Console.ReadLine();
-
-            // Verificamos que la entrada no esté vacía
-            if (string.IsNullOrWhiteSpace(input))
+            Console.Write(mensaje);
+            string entrada = Console.ReadLine();
+            if (int.TryParse(entrada, out numero))
             {
-                Console.WriteLine("La entrada no puede estar vacía. Intenta de nuevo.");
-                continue;
-            }
-
-            // Intentamos convertir el valor ingresado
-            if (int.TryParse(input, out value))
-            {
-                return value;
+                return numero;
             }
             else
             {
-                Console.WriteLine("Por favor ingresa un número entero válido.");
+                Console.WriteLine("Por favor, ingresa un número entero válido.");
             }
         }
     }
