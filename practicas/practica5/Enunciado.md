@@ -73,4 +73,4 @@ Ejemplo:
 Dado un arreglo de enteros y un número `target`, encuentra todos los subconjuntos cuya suma sea igual al `target`.  
 Ejemplo: `[2, 3, 6, 7], target=7` → subconjuntos `[7]`, `[2, 2, 3]`.
 
----
+---code 
