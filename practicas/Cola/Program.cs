@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
+// System.Collections.Generic → Contiene la clase Queue<T> que implementa una cola genérica.
 namespace PracticaCola
 {
-    // Clase Cola con operaciones
+    // Clase Cola con operaciones CONSTRUCTOR incia con cola vacía
     class Cola
     {
         private Queue<int> elementos;
@@ -13,14 +13,14 @@ namespace PracticaCola
             elementos = new Queue<int>();
         }
 
-        // Insertar (Enqueue)
+        // Insertar (Enqueue) METODO PRINCIPAL inserta al final de la cola
         public void Enqueue(int valor)
         {
             elementos.Enqueue(valor);
             Console.WriteLine($"Se agregó {valor} a la cola.");
         }
 
-        // Eliminar (Dequeue)
+        // Eliminar (Dequeue) METODO elimina el primero d la cola
         public void Dequeue()
         {
             if (elementos.Count > 0)
@@ -34,7 +34,7 @@ namespace PracticaCola
             }
         }
 
-        // Ver el primer elemento
+        // Ver el primer elemento METODO para ver el primer elemento de la Cola
         public void Peek()
         {
             if (elementos.Count > 0)
@@ -47,7 +47,7 @@ namespace PracticaCola
             }
         }
 
-        // Mostrar todos los elementos
+        // Mostrar todos los elementos METODO que recorre toda la cola e imprime sus elementos
         public void Mostrar()
         {
             if (elementos.Count > 0)
@@ -64,7 +64,7 @@ namespace PracticaCola
             }
         }
 
-        // Cantidad de elementos
+        // Cantidad de elementos METODO para mostrar cuántos elementos tiene la Cola
         public void Contar()
         {
             Console.WriteLine($"La cola contiene {elementos.Count} elementos.");
