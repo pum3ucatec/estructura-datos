@@ -17,6 +17,7 @@ namespace ColaDinamica
                 Console.WriteLine("3. Eliminar (Dequeue)");
                 Console.WriteLine("4. Ver frente (Peek)");
                 Console.WriteLine("5. Verificar si está vacía");
+                Console.WriteLine("6. Contar elementos");
                 Console.WriteLine("0. Salir");
                 Console.Write("Seleccione una opción: ");
 
@@ -59,6 +60,9 @@ namespace ColaDinamica
                         break;
                     case 5:
                         Console.WriteLine(cola.EstaVacia ? "La cola está vacía." : "La cola NO está vacía.");
+                        break;
+                    case 6:
+                        Console.WriteLine($"Cantidad de elementos en la cola: {cola.ContarElementos()}");
                         break;
                     case 0:
                         Console.WriteLine("Saliendo del programa...");

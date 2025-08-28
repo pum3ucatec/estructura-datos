@@ -57,14 +57,26 @@ namespace ColaDinamica
                 return;
             }
 
-            Console.Write("Cola: ");
+            Console.Write("Cola:|");
             Nodo<T>? actual = frente;
             while (actual != null)
             {
-                Console.Write(actual.Valor + " ");
+                Console.Write(actual.Valor + "|");
                 actual = actual.Siguiente;
             }
             Console.WriteLine();
         }
+        //Contar la cantidad de elementos en la cola
+        public int ContarElementos()
+        {
+            int contador = 0;
+            Nodo<T>? actual = frente;   //se empieza desde el frente
+            while (actual != null)
+            {
+                contador++;
+                actual = actual.Siguiente;  //pasa al siguiene Nodo
+            }
+            return contador;
+        }       //Este método recorre nodo por nodo hasta llegar al final (null) y cuenta
     }
 }
