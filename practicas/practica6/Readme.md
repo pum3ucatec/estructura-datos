@@ -1,7 +1,7 @@
 # COLA DINAMICA CON NODOS
 
 #### SE IMPLEMENTA UNA COLA CON LISTA ENLAZADA SIMPLE
-- FIFO = *First In, First Out*: el primo en entrar es el primero en salir.
+- FIFO = *First In, First Out*: el primero en entrar es el primero en salir.
 - Estructura: cada elmento es un **Nodo** que guarda un valor y una referencia al siguiente.
 - La cola tiene dos punteros:
     - **frente**: desde aquí se desencola (sale).
