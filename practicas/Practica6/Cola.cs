@@ -10,6 +10,46 @@ public class Cola
         this.Rear = null;
     }
 
+    public int Count()
+    {
+        int count = 0;
+        Nodo current = this.Front;
+        while (current != null)
+        {
+            count++;
+            current = current.Next;
+        }
+        return count;
+    }
+
+    public bool RemoveAt(int position)
+    {
+        if (position < 0 || this.Front == null)
+            return false;
+
+        if (position == 0)
+        {
+            this.Dequeue();
+            return true;
+        }
+
+        Nodo current = this.Front;
+        int index = 0;
+        while (current.Next != null && index < position - 1)
+        {
+            current = current.Next;
+            index++;
+        }
+        if (current.Next == null)
+            return false;
+
+        if (current.Next == this.Rear)
+            this.Rear = current;
+
+        current.Next = current.Next.Next;
+        return true;
+    }
+
     public string Dequeue()
     {
         if (this.Front == null)

@@ -13,9 +13,11 @@
             Console.WriteLine("3. Eliminar (Dequeue)");
             Console.WriteLine("4. Ver frente (Peek)");
             Console.WriteLine("5. Verificar si está vacía");
+            Console.WriteLine("6. Contar elementos");
+            Console.WriteLine("7. Eliminar por posición");
             Console.WriteLine("0. Salir");
             Console.Write("Seleccione una opción: ");
-            
+
             if (!int.TryParse(Console.ReadLine(), out opcion))
             {
                 Console.WriteLine("Ingrese un número válido.");
@@ -58,6 +60,23 @@
                         Console.WriteLine("La cola está vacía.");
                     else
                         Console.WriteLine("La cola NO está vacía.");
+                    break;
+                case 6:
+                    Console.WriteLine($"Cantidad de elementos en la cola: {cola.Count()}");
+                    break;
+                case 7:
+                    Console.Write("Ingrese la posición a eliminar (empezando en 0): ");
+                    if (int.TryParse(Console.ReadLine(), out int pos))
+                    {
+                        if (cola.RemoveAt(pos))
+                            Console.WriteLine($"Elemento en la posición {pos} eliminado.");
+                        else
+                            Console.WriteLine("No se pudo eliminar. Posición inválida o cola vacía.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Posición inválida.");
+                    }
                     break;
                 case 0:
                     break;
