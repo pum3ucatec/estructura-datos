@@ -27,6 +27,7 @@ class Principal
             Console.WriteLine("5. Verificar si está vacía");
             Console.WriteLine("6. Ejemplo de Recursividad con el factorial");
             Console.WriteLine("7. Insertar al principio");
+            Console.WriteLine("8. Insertar en orden");
             Console.WriteLine("0. Salir");
             Console.Write("Seleccione una opción: ");
 
@@ -55,8 +56,10 @@ class Principal
                 break;
                 case 3:
                     Console.Write("Ingrese el nombre a eliminar: ");
-                    string valorEliminar = Console.ReadLine();
-                    if (!string.IsNullOrEmpty(valorEliminar))
+                    //string valorEliminar = Console.ReadLine();
+                    string input = Console.ReadLine();
+                    int valorEliminar;
+                    if (int.TryParse(input, out valorEliminar))
                     {
                         lista.Delete(valorEliminar);
                     }
@@ -93,14 +96,16 @@ class Principal
                     break;
                 case 7:
                     Console.Write("Ingrese dato para insertar al principio: ");
-                    string valorInicio = Console.ReadLine();
-                    if (!string.IsNullOrEmpty(valorInicio))
+                    //string valorInicio = Console.ReadLine();
+                    string inputInicio = Console.ReadLine();
+                    int valorInicio;
+                    if (int.TryParse(inputInicio, out valorInicio))
                     {
-                        lista.InsertAtBeguinnig(valorInicio);
+                        lista.InsertAtBeguinning(valorInicio);
                     }
                     else
                     {
-                        Console.WriteLine("Valor inválido.");
+                        Console.WriteLine("Número inválido.");
                     }
                     break;
                 case 8:

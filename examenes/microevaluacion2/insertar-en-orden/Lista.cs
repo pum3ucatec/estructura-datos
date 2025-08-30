@@ -5,9 +5,9 @@ public class Lista
     {
         this.Root = null;
     }
-    public void Insert(string name)
+    public void Insert(int value)
     {
-        Nodo nodo = new Nodo(name);
+        Nodo nodo = new Nodo(value);
         if (this.Root == null)
         {
             this.Root = nodo;
@@ -27,25 +27,25 @@ public class Lista
         Nodo current = this.Root;
         while (current != null)
         {
-            Console.Write($"{current.Name} | ");
+            Console.Write($"{current.Value} | ");
             current = current.Next;
         }
     }
-    public void Delete(string name)
+    public void Delete(int value)
     {
         if (Root == null)
         {
             Console.WriteLine("La lista está vacía.");
             return;
         }
-        if (Root.Name == name)
+        if (Root.Value == value)
         {
             Root = Root.Next;
-            Console.WriteLine($"Elemento '{name}' eliminado.");
+            Console.WriteLine($"Elemento '{value}' eliminado.");
             return;
         }
         Nodo current = Root;
-        while (current.Next != null && current.Next.Name != name)
+        while (current.Next != null && current.Next.Value != value)
         {
             current = current.Next;
         }
@@ -56,18 +56,18 @@ public class Lista
         else
         {
             current.Next = current.Next.Next;
-            Console.WriteLine($"Elemento '{name}' eliminado.");
+            Console.WriteLine($"Elemento '{value}' eliminado.");
         }
     }
     //Insertar al principio
-    public void InsertAtBeguinnig(string name)
+    public void InsertAtBeguinning(int value)
     {
-        Nodo nodo = new Nodo(name);
+        Nodo nodo = new Nodo(value);
         nodo.Next = Root;
         Root = nodo;
-        Console.WriteLine($"Elemento '{name}' se insertó al principio");
+        Console.WriteLine($"Elemento '{value}' se insertó al principio");
     }
-    //Insertar en orde
+    //Insertar en orden
     public void InsertInOrder(int value)
     {
         Nodo nodo = new Nodo(value);
@@ -78,5 +78,13 @@ public class Lista
             Console.WriteLine($"Elemento {value} insertado en orden.");
             return;
         }
+        Nodo current = Root;
+        while (current.Next != null && current.Next.Value < value)
+        {
+            current = current.Next;
+        }
+        nodo.Next = current.Next;
+        current.Next = nodo;
+        Console.WriteLine($"Elemento {value} insertado en orden");
     }
 }
